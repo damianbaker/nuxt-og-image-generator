@@ -20,6 +20,6 @@ To get the "Dynamic Social Share Cards" feature working, you need the core engin
 
 satori: The core engine. It takes a JSON-like object representing DOM nodes and calculates the layout to produce an SVG string.
 
-satori-html: Satori cannot read raw HTML strings by default (it expects a complex object tree). This library allows you to write standard HTML strings (like <div class="bg-black">...</div>) and automatically converts them into the object format Satori needs.
+satori-html: Satori cannot read raw HTML strings by default (it expects a complex object tree). This library allows you to write standard HTML strings (like < div class="bg-black">...< /div>) and automatically converts them into the object format Satori needs.
 
 @resvg/resvg-js: While Satori outputs an SVG, platforms like Twitter, LinkedIn, and Facebook generally require (or strongly prefer) PNG or JPG files for Open Graph previews. This library is a high-performance Rust-based engine (wrapped in JS) that converts the Satori SVG into a PNG buffer.
