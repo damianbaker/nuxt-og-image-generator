@@ -1,0 +1,1 @@
+# nuxt-og-image-generator
