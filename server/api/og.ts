@@ -8,6 +8,8 @@ export default defineEventHandler(async (event) => {
   const { title } = getQuery(event)
 
   // 2. Load the font data
+  // Satori cannot use "system fonts" (like Arial or Roboto installed on your laptop) because it runs in a serverless environment where those fonts don't exist.
+  //To make this work, you must feed Satori raw font data (usually by reading a .ttf or .woff file from your public folder using fs or fetch).
   // We fetch the raw .ttf or .woff buffer from Google Fonts
   const fontData = await fetch('https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/files/inter-latin-700-normal.woff')
     .then((res) => res.arrayBuffer())
