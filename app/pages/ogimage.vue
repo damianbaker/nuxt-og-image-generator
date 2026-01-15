@@ -3,6 +3,9 @@ const route = useRoute()
 
 // We initialize the input with the URL query, or a default string
 const inputContent = ref((route.query.title as string) || 'My Amazing Nuxt Project')
+const idProduct = ref((route.query.idproduct as string) || 5711)
+const discountValue = ref((route.query.discountvalue as string) || '20')
+const discountCode = ref((route.query.discountcode as string) || 'SAVE20')
 const activeTitle = ref(inputContent.value)
 
 // When the button is clicked, we update 'activeTitle'
@@ -15,7 +18,7 @@ function generateNewImage() {
 
 // This now depends on 'activeTitle' (reactive) instead of the route directly
 const ogImageUrl = computed(() => {
-  return `/api/og?title=${encodeURIComponent(activeTitle.value)}`
+  return `/api/og?title=${encodeURIComponent(activeTitle.value)}&idproduct=${encodeURIComponent(idProduct.value)}&discountvalue=${encodeURIComponent(discountValue.value)}&discountcode=${encodeURIComponent(discountCode.value)}`
 })
 
 // We update the meta tags to the image
