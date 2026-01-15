@@ -1,4 +1,5 @@
 # nuxt-og-image-generator
+# Server-Side Dynamic Open Graph (OG) Image Generator.
 # **Installation**
 
 `nvm use 22.18.0`

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 
-// We initialize the input with the URL query, or a default string
+// We initialize the input with the URL query, or a default value
 const inputContent = ref((route.query.title as string) || 'My Amazing Nuxt Project')
 const idProduct = ref((route.query.idproduct as string) || 5711)
 const discountValue = ref((route.query.discountvalue as string) || '20')
@@ -16,12 +16,11 @@ function generateNewImage() {
   }
 }
 
-// This now depends on 'activeTitle' (reactive) instead of the route directly
 const ogImageUrl = computed(() => {
   return `/api/og?title=${encodeURIComponent(activeTitle.value)}&idproduct=${encodeURIComponent(idProduct.value)}&discountvalue=${encodeURIComponent(discountValue.value)}&discountcode=${encodeURIComponent(discountCode.value)}`
 })
 
-// We update the meta tags to the image
+// Update the meta tags to the image
 useSeoMeta({
   title: activeTitle,
   ogTitle: activeTitle,
@@ -36,7 +35,7 @@ useSeoMeta({
     
     <div style="margin-bottom: 40px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;">
       <label style="display: block; margin-bottom: 10px; font-weight: bold;">
-        Customize Social Card
+        Customize Title
       </label>
       
       <div style="display: flex; gap: 10px;">
@@ -56,17 +55,11 @@ useSeoMeta({
       </div>
     </div>
 
-    <h1>{{ activeTitle }}</h1>
-    <p>Check the &lt;head&gt; of this page to see the dynamic tags</p>
-    
-    <div>
-      <p style="font-weight: bold; margin-bottom: 10px;">Open Graph Image Preview:</p>
-      
-      <img 
-        :src="ogImageUrl" 
-        alt="Social Preview" 
-        style="width: 100%; max-width: 600px; display: block; border: 1px solid #ccc; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" 
-      />
-    </div>
+    <h3>Open Graph Image Preview : </h3>
+    <img 
+      :src="ogImageUrl" 
+      alt="Social Preview" 
+      style="width: 100%; max-width: 600px; display: block; border: 1px solid #ccc; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 12px;" 
+    />
   </div>
 </template>
